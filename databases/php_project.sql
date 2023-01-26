@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2023 at 05:05 AM
+-- Generation Time: Jan 26, 2023 at 08:39 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,11 +44,21 @@ CREATE TABLE `list_shows` (
   `show_id` int(11) NOT NULL,
   `show_name` varchar(25) NOT NULL,
   `date` date NOT NULL,
-  `time` int(11) NOT NULL,
   `cost` int(11) NOT NULL,
-  `image` blob NOT NULL,
-  `description` varchar(50) NOT NULL
+  `description` varchar(50) NOT NULL,
+  `time` varchar(55) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `list_shows`
+--
+
+INSERT INTO `list_shows` (`show_id`, `show_name`, `date`, `cost`, `description`, `time`, `image`) VALUES
+(1, 'AVATAR', '2023-01-28', 30, 'A paraplegic Marine dispatched to the moon Pandora', '9h:00m PM - 11h:30m PM', 'https://seuladogeek.com.br/wp-content/uploads/2017/08/John-Wick-Chapter-2.jpg'),
+(2, 'AVATAR', '0000-00-00', 30, 'A paraplegic Marine dispatched to the moon Pandora', '9h:00m PM - 11h:30m PM', './assets/images/avatar.jpg'),
+(3, 'JOHN-WICK', '0000-00-00', 30, 'John eventually became the top enforcer for the Ne', '2h:00m PM - 4h:30m PM', './assets/images/john-wick.jpg'),
+(4, 'SPIDER-MAN', '0000-00-00', 30, 'Superhuman strength, agility, endurance, ability t', '9h:00m PM - 11h:30m PM', './assets/images/spiderman.jpg');
 
 -- --------------------------------------------------------
 
@@ -62,6 +72,27 @@ CREATE TABLE `sellers` (
   `description` varchar(50) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `slider_id` int(11) NOT NULL,
+  `img_path` varchar(100) NOT NULL,
+  `alt` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`slider_id`, `img_path`, `alt`) VALUES
+(1, '../../assets/images/avatar.jpg', 'First Slide'),
+(2, '../../assets/images/spiderman.jpg', 'Secound Slide'),
+(3, '../../assets/images/batman.jpg', 'Third Slide');
 
 -- --------------------------------------------------------
 
@@ -113,6 +144,12 @@ ALTER TABLE `sellers`
   ADD PRIMARY KEY (`seller_id`);
 
 --
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`slider_id`);
+
+--
 -- Indexes for table `tickets`
 --
 ALTER TABLE `tickets`
@@ -139,13 +176,19 @@ ALTER TABLE `cards`
 -- AUTO_INCREMENT for table `list_shows`
 --
 ALTER TABLE `list_shows`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
   MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tickets`
