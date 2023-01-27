@@ -1,9 +1,7 @@
 <?php
-require "database.php";
-$items = $conn->query(" SELECT * FROM list_shows");
+    require "database.php";
+    $items = $conn->query(" SELECT * FROM list_shows");
 ?>
-
-
 <div class="container_card p-5  bg-dark d-flex">
     <?php 
     foreach ($items as $item){ 
@@ -19,5 +17,5 @@ $items = $conn->query(" SELECT * FROM list_shows");
     <?php
     }
     ?>
-
 </div>
+
